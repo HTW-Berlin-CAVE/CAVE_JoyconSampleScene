@@ -9,7 +9,6 @@ public class ChangeText : MonoBehaviour
     private TextMeshPro signWalk;
     private TextMeshPro signPickUp;
     private TextMeshPro signThrow;
-    public GameObject cave;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +25,7 @@ public class ChangeText : MonoBehaviour
             signPickUp.text = notAvalible;
             signThrow.text = notAvalible;
         }
-        else if (JoyconHelper.GetJoyconsCount() > 1)
+        else if (JoyconHelper.GetJoyconsCount() == 1)
         {
             signWalk.text = "Benutzen Sie bitte den linken Analog-Stick, um sich zu bewegen";
             signPickUp.text = "Mit der Taste 'ZR', kann der Ball aufgehoben werden";

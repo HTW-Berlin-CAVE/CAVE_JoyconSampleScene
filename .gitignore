@@ -34,3 +34,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+#de.htw.cave package soll nicht mit hochgeladen werden,
+#damit man sich immer das aktuellste package aus dem git 
+#ziehen muss.
+de.htw.cave/

@@ -16,7 +16,6 @@ public class PickUpThrow : MonoBehaviour
     private GameObject centerCamera;
     public GameObject item;
     public GameObject tempParent;
-    public GameObject cave;
     public bool isHolding = false;
     public bool wasPushed = false;
     private Vector3 rotate;
@@ -53,9 +52,9 @@ public class PickUpThrow : MonoBehaviour
         //Checks if currently holding something
         if (isHolding)
         {
-            item.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            item.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            item.transform.SetParent(tempParent.transform);
+            item.transform.position = tempParent.transform.position +
+                                      tempParent.transform.forward * 1.5f +
+                                      tempParent.transform.up * 1.6f;
             RotateObject();
         }
         else
