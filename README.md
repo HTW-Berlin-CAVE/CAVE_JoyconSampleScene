@@ -44,7 +44,9 @@ Zur Nutzung der Joy-Cons müssen diese angemeldet werden, indem folgende Schritt
   * Joycon.Button.*\<Button\>* : Gibt den Keycode des jeweiligen Buttons zurück
 * ##### *wichtige* Methoden des Joycon-*Objektes*:
   * *\<joycon\>*.SetRumble(low_freq, high_freq, amp, time) startet die Rumblefunktion des jeweiligen Joycons
-  * *\<joycon\>*.GetButton(keycode) prüft, ob der Key, dessen Keycode als Parameter übergeben wurde gedrückt wurde. 
+  * *\<joycon\>*.GetButton(keycode) prüft, ob der Key, dessen Keycode als Parameter übergeben wurde gedrückt wird. 
+  * *\<joycon\>*.GetButtonUp(keycode) prüft, ob der Key, dessen Keycode als Parameter übergeben wurde gedrückt wurde.
+  * *\<joycon\>*.GetButtonDown(keycode) prüft, ob der Key, dessen Keycode als Parameter übergeben wurde released wurde. 
   * *\<joycon\>*.GetStick() returned ein float[2]-Array, wobei [0] die x-Achse und [1] die y-Achse des Sticks ist. Der Wertebereich liegt zwischen -1 und 1.
   * *\<joycon\>*.GetGyro() returned einen Vector3, der die aktuelle Rotation des Joycons beinhaltet
   * *\<joycon\>*.GetAccel() returned einen Vector3, der immer nach "unten" aus Sicht jeweiligen Joycon aus zeigt
@@ -60,3 +62,30 @@ SetRumble(160.0f, 320.0f, 0.6f, 1000)
 0.6f = Die Amplitude
 1000 = Die Zeit der Vibration in ms
   
+### Example
+```C#
+using UnityEngine;
+using Htw.Cave.Joycon;
+using JoyconLib;
+
+public class Example : MonoBehaviour
+{
+    private Joycon leftJoycon;
+        
+    private void Update()
+    {
+       //caching des Joycon-Objektes
+       leftJoycon = JoyconHelper.GetLeftJoycon();
+       
+       // In jedem Frame neu prüfen, ob der Joycon noch angeschlossen ist
+       if (leftJoycon != null)
+       {
+          //Einen Buttondruck testen
+          if (leftJoycon.GetButtonDown(Joycon.Button.SHOULDER_2))
+          {
+             //DoSomething
+          }
+       }
+    }
+ }
+```
